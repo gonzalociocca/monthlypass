@@ -591,7 +591,7 @@ end
 	SetTextBg(0, 0, 0, 0)
 		--debug RenderText3(200, 200, string.format("%d|%d|%d", MousePosX(), MousePosY(),ReturnWideScreenX()) ,MonthlyPass.ScaleY(200),8)
 
-	RenderText3(MonthlyPass.ScaleX(320), posY+33, 'ImmortalMu Monthly Pass', MonthlyPass.ScaleY(190), 8)
+	RenderText3(MonthlyPass.ScaleX(320), 35, 'ImmortalMu Monthly Pass', MonthlyPass.ScaleY(190), 8)
 	RenderText3(MonthlyPass.ScaleX(320), 422, 'Get Reward', MonthlyPass.ScaleY(128), 8)
 	--nospace RenderText2(MonthlyPass.ScaleX(StartPosImg+100), MonthlyPass.ScaleY(posY+400), MONTHLY_PASS_MESSAGES[GetLanguage()][9], MonthlyPass.ScaleFont(30), 0)
 
