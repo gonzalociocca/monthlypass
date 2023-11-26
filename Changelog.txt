@@ -2,3 +2,9 @@
 1.1 Fix Background:
 Replaced 1000x1000px Background with 500x480px background, if you have resolution issues disable WideScreen, if it persist contact me (discord: shadowarfare), alternatively there is a 1000x960px background, not sure if it works.
 Replaced in Client MonthlyPass.lua > 	RenderText3(MonthlyPass.ScaleX(320), posY+33, 'ImmortalMu Monthly Pass', MonthlyPass.ScaleY(190), 8) > with > 	RenderText3(MonthlyPass.ScaleX(320), 35, 'ImmortalMu Monthly Pass', MonthlyPass.ScaleY(190), 8)
+1.2 Monthly Pass V2.3 Release
++VIP System (VIPReq = Vip requirement to receive that item) (Vip Coin Multiplier)
++Item Expire
++Configurable messages
++Tried to fix resolution issues
++Big changes in the config, if you want to update, make sure you have the right config.
