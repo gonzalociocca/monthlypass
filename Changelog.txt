@@ -8,3 +8,5 @@ Replaced in Client MonthlyPass.lua > 	RenderText3(MonthlyPass.ScaleX(320), posY+
 +Configurable messages
 +Tried to fix resolution issues
 +Big changes in the config, if you want to update, make sure you have the right config.
+1.3 Monthly Pass V2.4 Release
+Added VIP Selection on interface

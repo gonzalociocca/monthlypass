@@ -11,6 +11,7 @@ MONTHLY_PASS_MOUSE_POS_X = 1
 MONTHLY_PASS_MOUSE_POS_Y = 1
 MONTHLY_PASS_MOUSE_CLICK = 0
 MONTHLY_PASS_MOUSE_HOVER_REWARD = 0
+MONTHLY_PASS_MOUSE_HOVER_VIP = 0
 MONTHLY_PASS_MOUSE_HOVER_TICK = 0
 MONTHLY_PASS_MOUSE_HOVER_TICK_CURRENT = 1
 MONTHLY_PASS_MOUSE_HOVER_TICK_CURRENT2 = 1
@@ -19,7 +20,7 @@ MONTHLY_PASS_SHOW_TOP_BAR = 1
 MONTHLY_PASS_SWITCH = 1
 
 MONTHLY_PASS_VIP_LEVEL = 0 -- 0 = ALL, 1=VIP1+, 2=VIP2+, 3=VIP3+  This is for the minimum vip level to get rewarded for all rewards
-MONTHLY_PASS_COIN_MULT = {1, 2, 2, 2, 2} -- Coin Multiplier in relation to VIPLevel First=Free, Second=VIPBronze, Third=VIP2, Fourth=VIP3 and so on
+MONTHLY_PASS_COIN_MULT = {1, 2, 3, 4, 5} -- Coin Multiplier in relation to VIPLevel First=Free, Second=VIPBronze, Third=VIP2, Fourth=VIP3 and so on
 --packet number
 MONTHLY_PASS_PACKET = 2
 MONTHLY_PASS_PACKET2 = 3
@@ -433,7 +434,29 @@ function MonthlyPass.UpdateMouse()
     MONTHLY_PASS_MOUSE_HOVER_TICK=1
     MONTHLY_PASS_MOUSE_CLICK=0
   end
+  
+  --Hover Vip  RenderText3(MonthlyPass.ScaleX(320), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][10+MonthlyPassVip]..' | '..string.format(MONTHLY_PASS_MESSAGES[GetLanguage()][8],MonthlyPassMonth)..' | '..string.format(MONTHLY_PASS_MESSAGES[GetLanguage()][7],MonthlyPassDay), MonthlyPass.ScaleY(190), 8)
+--  RenderText3(MonthlyPass.ScaleX(200), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][10], MonthlyPass.ScaleX(48), 8)
+--  RenderText3(MonthlyPass.ScaleX(260), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][11], MonthlyPass.ScaleX(48), 8)
+--  RenderText3(MonthlyPass.ScaleX(320), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][12], MonthlyPass.ScaleX(48), 8)
+--  RenderText3(MonthlyPass.ScaleX(380), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][13], MonthlyPass.ScaleX(48), 8)
 
+local minX = MonthlyPass.ScaleX(200-24)
+local maxX = MonthlyPass.ScaleX(380 + 24)
+
+if (MousePosX() >= minX and MousePosX() <= maxX) and (MousePosY() >= 65 and MousePosY() <= 78) then
+    local mousePos = MousePosX()
+local buttonIndex = math.floor((mousePos - minX) / MonthlyPass.ScaleX(60))
+    if CheckClickClient() == 1 then
+        -- Calculate the button index based on the mouse position
+        -- Update MonthlyPassVip based on the button index
+        MonthlyPassVip = buttonIndex
+        
+        DisableClickClient()
+    end
+MONTHLY_PASS_MOUSE_HOVER_VIP=buttonIndex
+else MONTHLY_PASS_MOUSE_HOVER_VIP=-1
+end
 
   --Click reward
   if (MousePosX() >= MonthlyPass.ScaleX(207+73) and MousePosX() <= MonthlyPass.ScaleX(207+150))
@@ -669,7 +692,7 @@ local ccount = 0
 for i, item in ipairs(MONTHLY_PASS_PACKAGES[pid]) do
 	if MonthlyPassVip >= item.VipREQ then ccount=ccount+1 end
 end
-RenderText3(MonthlyPass.ScaleX(StartPosImg+30), posY+80, string.format('(%d/%d)',ccount, #MONTHLY_PASS_PACKAGES[pid]), MonthlyPass.ScaleY(64), 8)
+RenderText3(MonthlyPass.ScaleX(StartPosImg+30), posY+80, string.format('%d/%d',ccount, #MONTHLY_PASS_PACKAGES[pid]), MonthlyPass.ScaleY(64), 8)
 end
     if MonthlyPassDay == i
     then
@@ -699,9 +722,24 @@ end
 --  RenderText3(200, 200, string.format("%d|%d|%d", MousePosX(), MousePosY(),ReturnWideScreenX()) ,MonthlyPass.ScaleY(200),8)
 
   RenderText3(MonthlyPass.ScaleX(320), 35, MONTHLY_PASS_MESSAGES[GetLanguage()][16], MonthlyPass.ScaleY(190), 8)
-  RenderText3(MonthlyPass.ScaleX(320), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][10+MonthlyPassVip]..' | '..string.format(MONTHLY_PASS_MESSAGES[GetLanguage()][8],MonthlyPassMonth)..' | '..string.format(MONTHLY_PASS_MESSAGES[GetLanguage()][7],MonthlyPassDay), MonthlyPass.ScaleY(190), 8)
+--  if MONTHLY_PASS_MOUSE_HOVER_VIP == 1 then SetTextBg(100, 100, 100, 100) SetTextColor(102, 255, 102, 255) else SetTextBg(255, 0, 0, 100) SetTextColor(255, 255, 255, 255) end
+  if MonthlyPassVip==0 then SetTextBg(102, 255, 102, 100) SetTextColor(255, 255, 255, 255) else
+  SetTextBg(255, 0, 0, 100) SetTextColor(255, 255, 255, 255)   if MONTHLY_PASS_MOUSE_HOVER_VIP==0 then SetTextColor(255, 215, 0, 255) end end
+  RenderText3(MonthlyPass.ScaleX(200), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][10], MonthlyPass.ScaleX(48), 8)
+  if MonthlyPassVip==1 then SetTextBg(102, 255, 102, 100) SetTextColor(255, 255, 255,255) else
+  SetTextBg(255, 0, 0, 100) SetTextColor(255, 255, 255, 255)   if MONTHLY_PASS_MOUSE_HOVER_VIP==1 then SetTextColor(255, 215, 0, 255) end end
+  RenderText3(MonthlyPass.ScaleX(260), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][11], MonthlyPass.ScaleX(48), 8)
+  if MonthlyPassVip==2 then SetTextBg(102, 255, 102, 100) SetTextColor(255, 255, 255,255) else
+  SetTextBg(255, 0, 0, 100) SetTextColor(255, 255, 255, 255)   if MONTHLY_PASS_MOUSE_HOVER_VIP==2 then SetTextColor(255, 215, 0, 255) end end
+  RenderText3(MonthlyPass.ScaleX(320), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][12], MonthlyPass.ScaleX(48), 8)
+  if MonthlyPassVip==3 then SetTextBg(102, 255, 102, 100) SetTextColor(255, 255, 255, 255) else
+  SetTextBg(255, 0, 0, 100) SetTextColor(255, 255, 255, 255)   if MONTHLY_PASS_MOUSE_HOVER_VIP==3 then SetTextColor(255, 215, 0, 255) end end
+  RenderText3(MonthlyPass.ScaleX(380), 65, MONTHLY_PASS_MESSAGES[GetLanguage()][13], MonthlyPass.ScaleX(48), 8)
+  SetTextBg(0, 0, 0, 0)
+  SetTextColor(255, 255, 255, 255)
+  RenderText3(MonthlyPass.ScaleX(480), 65, string.format(MONTHLY_PASS_MESSAGES[GetLanguage()][8],MonthlyPassMonth)..' | '..string.format(MONTHLY_PASS_MESSAGES[GetLanguage()][7],MonthlyPassDay), MonthlyPass.ScaleY(190), 8)
 
-if MONTHLY_PASS_MOUSE_HOVER_REWARD == 1 then SetTextColor(102, 255, 102, 255) end
+if MONTHLY_PASS_MOUSE_HOVER_REWARD == 1 then SetTextColor(102, 255, 102, 255) else SetTextColor(255, 255, 255, 255) end
   RenderText3(MonthlyPass.ScaleX(320), 421, MONTHLY_PASS_MESSAGES[GetLanguage()][15], MonthlyPass.ScaleY(128), 8)
   --nospace RenderText2(MonthlyPass.ScaleX(StartPosImg+100), MonthlyPass.ScaleY(posY+400), MONTHLY_PASS_MESSAGES[GetLanguage()][9], MonthlyPass.ScaleFont(30), 0)
 
