@@ -1,7 +1,7 @@
--- Developed by Gonzalo Nicolas Ciocca Bortel, sold at a low price of $5USD
+-- Developed by Gonzalo Nicolas Ciocca Bortel
 -- Do you have questions related to this module? email to gonzalocioccabortel@yandex.ru
 -- All rights reserved by Gonzalo Nicolas Ciocca Bortel, you, or anything or anyone else does not have right to profit/resell this.
--- More modules like this? go to patreon.com/GonzaloCiocca https://www.youtube.com/@immortalmu
+-- Donate in: https://www.paypal.com/paypalme/gonzalonicolasciocca
 
 MONTHLY_PASS_NPC_OPEN = 836 -- 0=Replace 0 with the NPC ID that will open the monthly reward menu
 MONTHLY_PASS_LOGIN_OPEN = 0 -- 0 = Dont open on login, 1= Open on login
@@ -234,10 +234,10 @@ Messages configs
 MONTHLY_PASS_MESSAGES = {}
 
 MONTHLY_PASS_MESSAGES['Por'] = {
-  [1] = 'Você foi premiado com: %d %s',
-  [2] = 'Você está ocupado no momento!',
-  [3] = 'Ocorreu um erro na premiação, contate a administração.',
-  [4] = 'Ocorreu um erro, contate a administração.',
+  [1] = 'VocÃª foi premiado com: %d %s',
+  [2] = 'VocÃª estÃ¡ ocupado no momento!',
+  [3] = 'Ocorreu um erro na premiaÃ§Ã£o, contate a administraÃ§Ã£o.',
+  [4] = 'Ocorreu um erro, contate a administraÃ§Ã£o.',
   [5] = 'Voce solo te damos recompensa en argentina.',
 }
 
@@ -250,10 +250,10 @@ MONTHLY_PASS_MESSAGES['Eng'] = {
 }
 
 MONTHLY_PASS_MESSAGES['Spn'] = {
-  [1] = 'Se le otorgó: %d %s',
-  [2] = '¡Actualmente estás ocupado!',
-  [3] = 'Hubo un error en el premio, comuníquese con la administración.',
-  [4] = 'Se produjo un error, comuníquese con la administración.',
+  [1] = 'Se le otorgÃ³: %d %s',
+  [2] = 'Â¡Actualmente estÃ¡s ocupado!',
+  [3] = 'Hubo un error en el premio, comunÃ­quese con la administraciÃ³n.',
+  [4] = 'Se produjo un error, comunÃ­quese con la administraciÃ³n.',
   [5] = 'Ya recibiste las recompensas de hoy, Buscala en el NPC [RescueItem].',
 }
 
