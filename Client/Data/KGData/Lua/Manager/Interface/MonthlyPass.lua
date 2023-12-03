@@ -1,7 +1,7 @@
--- Developed by Gonzalo Nicolas Ciocca Bortel, sold at a low price of $5USD
+-- Developed by Gonzalo Nicolas Ciocca Bortel
 -- Do you have questions related to this module? email to gonzalocioccabortel@yandex.ru
 -- All rights reserved by Gonzalo Nicolas Ciocca Bortel, you, or anything or anyone else does not have right to profit/resell this.
--- More modules like this? go to patreon.com/GonzaloCiocca https://www.youtube.com/@immortalmu
+-- Donate in: https://www.paypal.com/paypalme/gonzalonicolasciocca
 
 --[[
 Configs
