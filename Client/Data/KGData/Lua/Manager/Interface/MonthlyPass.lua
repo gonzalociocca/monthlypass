@@ -308,11 +308,11 @@ MonthlyPassMonth = 1
 MonthlyPassDay = 1
 MonthlyPassVip = 0
 
-local InterfaceIndex_1 = -1
-local InterfaceIndex_2 = -1
-local InterfaceIndex_3 = -1
-local InterfaceIndex_4 = -1
-local InterfaceIndex_5 = -1
+local InterfaceIndex_1 = 40011
+local InterfaceIndex_2 = 40012
+local InterfaceIndex_3 = 40013
+local InterfaceIndex_4 = 40014
+local InterfaceIndex_5 = 40015
 
 --ImmortalMu Personal Code to fix aspect ratio
 function CalculateAspectRatio(width, height)
@@ -489,6 +489,35 @@ function MonthlyPass.UpdateKeyEvent()
 end
 
 function MonthlyPass.Render()
+	if	CheckWindowOpen(UIFriendList)		== 1	then	return							end
+	if	CheckWindowOpen(UIMoveList)			== 1	then	return							end
+	if	CheckWindowOpen(UIParty)			== 1	then	return							end
+	if	CheckWindowOpen(UIQuest)			== 1	then	return							end
+	if	CheckWindowOpen(UIGuild)			== 1	then	return							end
+	if	CheckWindowOpen(UITrade)			== 1	then	return							end
+	if	CheckWindowOpen(UIWarehouse)		== 1	then	return							end
+	if	CheckWindowOpen(UIChaosBox)			== 1	then	return							end
+	if	CheckWindowOpen(UICommandWindow)	== 1	then	return							end
+	if	CheckWindowOpen(UIPetInfo)			== 1	then	return							end
+	if	CheckWindowOpen(UIShop)				== 1	then	return							end
+	if	CheckWindowOpen(UIStore)			== 1	then	return							end
+	if	CheckWindowOpen(UIOtherStore)		== 1	then	return							end
+	if	CheckWindowOpen(UICharacter)		== 1	then	return							end
+	if	CheckWindowOpen(UIOptions)			== 1	then	return							end
+	if	CheckWindowOpen(UIHelp)				== 1	then	return							end
+	if	CheckWindowOpen(UIFastDial)			== 1	then	return							end
+	if	CheckWindowOpen(UISkillTree)		== 1	then	return							end
+	if	CheckWindowOpen(UINPC_Titus)		== 1	then	return							end
+	if	CheckWindowOpen(UICashShop)			== 1	then	return							end
+	if	CheckWindowOpen(UIFullMap)			== 1	then	return							end
+	if	CheckWindowOpen(UINPC_Dialog)		== 1	then	return							end
+	if	CheckWindowOpen(UIGensInfo)			== 1	then	return							end
+	if	CheckWindowOpen(UINPC_Julia)		== 1	then	return							end
+	if	CheckWindowOpen(UIExpandInventory)	== 1	then	return							end
+	if	CheckWindowOpen(UIExpandWarehouse)	== 1	then	return							end
+	if	CheckWindowOpen(UIMuHelper)			== 1	then	return							end
+	if	CheckWindowOpen(UIInventory)		== 1	then	return							end
+
   if MonthlyPass.CheckAnotherInterfaceOpen() ~= 0
   then
     return
@@ -866,11 +895,12 @@ function MonthlyPass.Protocol(Packet, PacketName)
 end
 
 function MonthlyPass.LoadImages()
-  InterfaceIndex_1 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//background.tga")
-  InterfaceIndex_2 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//bar.tga")
-  InterfaceIndex_3 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//blockred.tga")
-  InterfaceIndex_4 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//blockgreen.tga")
-  InterfaceIndex_5 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//blockyellow.tga")
+  --obsolete, see LoadImages.lua
+  --InterfaceIndex_1 = LoadImageByDir("KGData//KGData//Lua//Manager//LoadImage//MonthlyPass//background.tga")
+  --InterfaceIndex_2 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//bar.tga")
+  --InterfaceIndex_3 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//blockred.tga")
+  --InterfaceIndex_4 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//blockgreen.tga")
+  --InterfaceIndex_5 = LoadImageByDir("KGData//Lua//Manager//LoadImage//MonthlyPass//blockyellow.tga")
 end
 
 function MonthlyPass.Init()
@@ -880,7 +910,7 @@ function MonthlyPass.Init()
   end
 
   InterfaceController.ClientProtocol(MonthlyPass.Protocol)
-  InterfaceController.LoadImages(MonthlyPass.LoadImages)
+  --InterfaceController.LoadImages(MonthlyPass.LoadImages)
   InterfaceController.MainProc(MonthlyPass.Render)
   InterfaceController.UpdateMouse(MonthlyPass.UpdateMouse)
   InterfaceController.UpdateKey(MonthlyPass.UpdateKeyEvent)
